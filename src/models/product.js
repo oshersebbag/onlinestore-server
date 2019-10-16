@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
     categoryId: {
         type: ObjectId,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
     }
   });
   

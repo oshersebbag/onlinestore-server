@@ -4,10 +4,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan')
 const apiRouter = require('./config/routes');
 const config = require('./config/enviroment/index');
-
-
 const cors = require('cors');
 
+
+app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

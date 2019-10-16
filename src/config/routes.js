@@ -4,6 +4,7 @@ const products = require('../controllers/products.js');
 const categories = require('../controllers/categories.js');
 const apiRouter=express.Router();
 const authorization = require('./middlewares/authorization');
+const multerProducts = require('./multer/products');
 
 apiRouter.get('/user',users.all);
 apiRouter.put('/user',users.create);
@@ -13,7 +14,7 @@ apiRouter.post('/user/:id',users.update);
 
 
 apiRouter.get('/product',products.all);
-apiRouter.put('/product',products.create);
+apiRouter.put('/product', multerProducts.single('image'),products.create);
 apiRouter.get('/product/:id',products.getById);
 apiRouter.post('/product/bulk', products.getByIds);
 

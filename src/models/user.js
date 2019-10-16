@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
     bday: {
         type: Date,
         required: true
+    },
+    isAdmin: {
+        type: Boolean
     }
   });
   
