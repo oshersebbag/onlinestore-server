@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(morgan('combined'));
 app.use('/api', apiRouter);
 
-app.get('/', (req, res) => res.send('Hello World!'));
 app.listen(config.port, () => {
 console.log(`Example app listening on port ${config.port}!`);
 require('./db');
