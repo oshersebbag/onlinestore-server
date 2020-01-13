@@ -15,9 +15,18 @@ module.exports = {
         },
     create: (req,res) =>{
         const user= new User(req.body);
-        user.save()
-        .then(user => res.status(201).json(user))
-        .catch( err => res.status(400).json(err));
+        User.exists({email: user.email})
+        .then(answer => {
+            if(answer){
+                res.status(400).json("exist").send();
+            }
+            else {
+                user.save()
+                .then(user => res.status(201).json(user))
+                .catch( err => res.status(500).json(err));
+            }
+        });
+
     },
     login: (req,res) =>{
         User.findOne({
